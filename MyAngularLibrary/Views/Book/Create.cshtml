@@ -1,0 +1,23 @@
+﻿<div>
+    <div class="modal-header">
+        <p>Adding book</p>
+    </div>
+    <div class="modal-body">
+        <div ng-if="ctrl.error" class="text-danger">
+            Error occurred
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" type="text" ng-model="ctrl.book.Title" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <select id="author" type="text" ng-model="ctrl.book.AuthorId" class="form-control">
+                <option value="" disabled selected>- Please Choose -</option>
+                <option ng-repeat="author in ctrl.authors" value="{{author.Id}}">{{author.Name}}</option>
+            </select>
+        </div>
+        <input type="button" class="btn btn-default" value="Save" ng-click="ctrl.save()"/>
+        <input type="button" class="btn btn-default" value="Cancel" ng-click="ctrl.cancel()"/>
+    </div>
+</div>

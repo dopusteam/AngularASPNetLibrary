@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<h2>Client list</h2>
+
+<button ng-click="ctrl.addClient()" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Add client</button>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th ng-click="ctrl.orderBy='Id';ctrl.reverse=!ctrl.reverse;">Id</th>
+        <th ng-click="ctrl.orderBy='Name';ctrl.reverse=!ctrl.reverse;">Name</th>
+        <th ng-click="ctrl.orderBy='Books';ctrl.reverse=!ctrl.reverse;">Books ordered</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="client in ctrl.clients|orderBy:ctrl.orderBy:ctrl.reverse">
+            <td>{{client.Id}}</td>
+            <td>{{client.Name}}</td>
+            <td>{{client.Books}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<h2>Book list</h2>
+
+<div class="form-group">
+    <button ng-click="addBook()" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Add book</button>
+</div>
+
+<br/>
+
+<div class="form-group">
+    <label for="search">Search book:</label>
+    <input type="text" id="search" class="form-control" ng-model="query" placeholder="Filter" />
+</div>
+
+<ul class="pagination" ng-model="pages">
+    <li ng-repeat="page in pages" ng-click="toPage(page.number)" ng-class="{active: page.current}"><a>{{page.number}}</a></li>
+</ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="book in books|orderBy:orderBy:reverse">
+            <td>{{book.Id}}</td>
+            <td>{{book.Title}}</td>
+            <td>{{book.Author.Name}}</td>
+            <td ng-if="book.Client.Name">Ordered by {{book.Client.Name}}<input type="button" class="btn btn-success" value="Return book" ng-click="returnBook(book.Id)" /></td>
+            <td ng-if="!book.Client.Name"><input type="button" class="btn btn-success" value="Order" ng-click="orderBook(book.Id)" /></td>
+        </tr>
+    </tbody>
+</table>
+<ul class="pagination" ng-model="pages">
+    <li ng-repeat="page in pages" ng-click="toPage(page.number)" ng-class="{active: page.current}"><a>{{page.number}}</a></li>
+</ul>
